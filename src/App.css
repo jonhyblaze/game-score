@@ -1,38 +1,146 @@
+/* * Global Styles */
+body {
+  
+}
+
 .App {
+  width: 375px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 2rem;
+  background: #1F2029;
+  padding-top: 4.5rem;
+}
+
+/* *Typography */
+
+/* * Badminton Styles */
+
+.app-name {
   text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  color: #FFFFFF;
+  padding-bottom: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.badminton--container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.teams{
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+} 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.team--home {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
+  width: 163px;
+  height: 314px;
+  background: #BDABFF;
+  border-radius: 16px;
+}
+
+.team--away {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 163px;
+  height: 314px;
+  background: #7EE68D;
+  border-radius: 16px;
+}
+
+.team--score {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 97px;
+  color: #000000;
+}
+
+.team--img {
+  width: 43px;
+  height: 60px;
+  display: flex;
+  align-self: center;
+  justify-self: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.team--img--home {
+  background: url('/src/assets/images/angry-boar.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.team--img--away {
+  background: url('/src/assets/images/wild-dog.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.team--name {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+
+.team--score--buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.button--decrement {
+  width: 32px;
+  height: 32px;
+  background-image: url('/src/assets/svg/button--decrement.svg');
+  align-self: center;
+}
+
+.button--increment {
+  width: 53px;
+  height: 53px;
+  background-image: url('/src/assets/svg/button--increment.svg')
+}
+
+.button--newgame {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 64px;
+  height: 56px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.875rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
