@@ -31,52 +31,83 @@ const startNewGame = () => {
   setScoreHome(0)
 }
 
+
+// Styles 
+
+let winnerColor = {
+  backgroundColor: '#7EE68D'
+}
+
+let looserColor = {
+  backgroundColor: '#BDABFF'
+}
+
   return (
     <div className="badminton--container">
+       
        <h1 className="app-name">Game Score</h1>
-       <div className="teams">
+       
+       { ((scoreHome > 10 && scoreHome > scoreAway + 1) ||
+         ( scoreAway > 10 && scoreAway > scoreHome + 1)) ? 
+         <div className="game--over">
+            {scoreHome > scoreAway ? 
+              <div className="winner--img-name">
+                <div className="team--img--home team--img img--final "></div>
+                <div className="team--name">Wild Boars wins!</div>
+              </div>
+            : <div className="winner--img-name">
+                <div className="team--img--away team--img img--final"></div>
+                  <div className="team--name">Raging Dogs wins!</div>
+              </div>}
+            <div className="final--score">{scoreHome}:{scoreAway}</div>
+         </div> 
+         :  <div className="game--on">
+              <div className="teams">
+           
+           <div className="team--home team" style={scoreAway < scoreHome ? winnerColor : looserColor}>
+             <div className="team--img-name">
+               <div className="team--img team--img--home"></div>
+               <div className="team--name">Wild Boars</div>
+             </div>
+             <div className="team--score">
+               {scoreHome}
+             </div>
+             <div className="team--score--buttons">
+             <div id="decrementHome"
+                    className="button--decrement"
+                    onClick={decrement}>
+               </div>
+                <div id="incrementHome"
+                    className="button--increment"
+                    onClick={increment}>
+               </div>
+             </div>
+           </div>
           
-          <div className="team--home">
-            <div className="team--img team--img--home"></div>
-            <div className="team--name">WILD BOARS</div>
-            <div className="team--score">
-              {scoreHome}
+        <div className="team--away team" style={scoreAway > scoreHome ? winnerColor : looserColor}>
+           <div className="team--img-name">
+             <div className="team--img team--img--away"></div>
+             <div className="team--name">Raging Dogs</div>
+          </div> 
+           <div className="team--score">
+             {scoreAway}
+           </div>
+           <div className="team--score--buttons">
+               <div id="decrementAway"
+                    className="button--decrement"
+                    onClick={decrement}>
+               </div>
+                <div id="incrementAway"
+                    className="button--increment"
+                    onClick={increment}>
+               </div>
             </div>
-            <div className="team--score--buttons">
-            <div id="decrementHome"
-                   className="button--decrement"
-                   onClick={decrement}>
-              </div>
-               <div id="incrementHome"
-                   className="button--increment"
-                   onClick={increment}>
-              </div>
-            </div>
           </div>
-      
-         
-        <div className="team--away">
-          <div className="team--img team--img--away"></div>
-          <div className="team--name">FURIOUS CATS</div>
-          <div className="team--score">
-            {scoreAway}
-          </div>
-          <div className="team--score--buttons">
-              <div id="decrementAway"
-                   className="button--decrement"
-                   onClick={decrement}>
-              </div>
-               <div id="incrementAway"
-                   className="button--increment"
-                   onClick={increment}>
-              </div>
-        
-          </div>
-        </div>
-      
-      </div>
-      <div className="timer"></div>
-    
+
+         </div>
+       </div>
+       }
+
       <div id="new-game"
            onClick={startNewGame}
            className="button--newgame">New Game
