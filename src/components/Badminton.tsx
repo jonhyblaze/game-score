@@ -1,38 +1,64 @@
-import React from "react"
-
+import React, {useEffect, useState} from "react"
+import { avatars } from "../js/avatars"
+import { randomNumbers } from '../js/randomNumbers';
 
 function Badminton () {
-  const [scoreHome, setScoreHome] = React.useState(0)
-  const [scoreAway, setScoreAway] = React.useState(0)
-  const [avatars, setAvatar] = React.useState(
-    ['/src/assets/images/angry-boar.png', 
-    '/src/assets/images/wild-dog.png'])
+  let [random, setRandom] = useState(randomNumbers())
+  // let [randomHome, setRandomHome] = useState(random[0])
+  // let [randomAway, setRandomAway] = useState(random[1])
+  const [home, setHome] = useState({name: avatars[random[0]].name, url: avatars[random[0]].url, score: 0})
+  const [away, setAway] = useState({name: avatars[random[1]].name, url: avatars[random[1]].url, score: 0})
+  const [isPlaying, setIsPlaying] = useState(false)
 
-const increment = (event:any) => {
+  useEffect( () =>{
+    setHome({...home, name: avatars[random[0]].name, url: avatars[random[0 ]].url})
+    setAway({...away, name: avatars[random[1]].name, url: avatars[random[1]].url})
+  },[random])
+
+
+  console.log(random)
+  console.log(home)
+  console.log(away)
+
+
+
+  const increment = (event:any) => {
   if(event.target.id === "incrementHome")  {
-    setScoreHome(prev => prev +1)
+    setHome({...home, score: home.score + 1})
   } 
   if(event.target.id === "incrementAway") {
-    setScoreAway(prev => prev +1)
+    setAway({...away, score: away.score + 1})
   }
 }
 
 const decrement = (event:any) => {
-  if(event.target.id === "decrementHome" && scoreHome >= 1) {
-    setScoreHome(prev => prev - 1)
+  if(event.target.id === "decrementHome" && home.score >= 1) {
+    setHome({...home, score: home.score - 1})
   }
-  if(event.target.id === "decrementAway" && scoreAway >= 1) {
-    setScoreAway(prev => prev - 1)
+  if(event.target.id === "decrementAway" && away.score >= 1) { 
+    setAway({...away, score: away.score - 1})
   }
 }
 
-const startNewGame = () => {
-  setScoreAway(0)
-  setScoreHome(0)
+useEffect( ()=>{
+  if( (home.score > 10 && home.score > away.score + 1) || (away.score > 10 && away.score > home.score + 1)) {
+    setIsPlaying(false)
+  } else setIsPlaying(true)
+},[home.score, away.score])
+
+
+
+const startNewGame = () : void => {
+  setRandom(randomNumbers())
+  setHome({...home, name: avatars[random[0]].name, url: avatars[random[0]].url, score: 0})
+  setAway({...home, name: avatars[random[1]].name, url: avatars[random[1]].url, score: 0})
+  setIsPlaying(true)
 }
 
+console.log(isPlaying)
 
-// Styles 
+
+// Styles
 
 let winnerColor = {
   backgroundColor: '#7EE68D'
@@ -45,32 +71,42 @@ let looserColor = {
   return (
     <div className="badminton--container">
        
-       <h1 className="app-name">Game Score</h1>
+       <h1 className="app-name">Badminton</h1>
        
-       { ((scoreHome > 10 && scoreHome > scoreAway + 1) ||
-         ( scoreAway > 10 && scoreAway > scoreHome + 1)) ? 
+       {!isPlaying ? 
          <div className="game--over">
-            {scoreHome > scoreAway ? 
+            {home.score > away.score ? 
               <div className="winner--img-name">
-                <div className="team--img--home team--img img--final "></div>
-                <div className="team--name">Wild Boars wins!</div>
+                {/* <div className="team--img--home team--img img--final "></div> */}
+                <img src={home.url}
+                     alt=""
+                     className="team--img img--final" 
+                />
+                <div className="team--name winner--name">{home.name} wins!</div>
               </div>
             : <div className="winner--img-name">
-                <div className="team--img--away team--img img--final"></div>
-                  <div className="team--name">Raging Dogs wins!</div>
+                {/* <div className="team--img--away team--img img--final"></div> */}
+                  <img src={away.url}
+                     alt=""
+                     className="team--img img--final" 
+                 />
+                  <div className="team--name winner--name">{away.name} wins!</div>
               </div>}
-            <div className="final--score">{scoreHome}:{scoreAway}</div>
+            <div className="final--score">{home.score}:{away.score}</div>
          </div> 
          :  <div className="game--on">
               <div className="teams">
            
-           <div className="team--home team" style={scoreAway < scoreHome ? winnerColor : looserColor}>
-             <div className="team--img-name">
-               <div className="team--img team--img--home"></div>
-               <div className="team--name">Wild Boars</div>
+           <div className="team--home team" style={away.score < home.score ? winnerColor : looserColor}>
+             <div className="team--img-name">               
+               <img src={home.url}
+                    alt=""
+                    className="team--img"
+                />
+               <div className="team--name">{home.name}</div>
              </div>
              <div className="team--score">
-               {scoreHome}
+               {home.score}
              </div>
              <div className="team--score--buttons">
              <div id="decrementHome"
@@ -84,13 +120,16 @@ let looserColor = {
              </div>
            </div>
           
-        <div className="team--away team" style={scoreAway > scoreHome ? winnerColor : looserColor}>
+        <div className="team--away team" style={away.score > home.score ? winnerColor : looserColor}>
            <div className="team--img-name">
-             <div className="team--img team--img--away"></div>
-             <div className="team--name">Raging Dogs</div>
+           <img src={away.url}
+                    alt=""
+                    className="team--img"
+            />
+             <div className="team--name">{away.name}</div>
           </div> 
            <div className="team--score">
-             {scoreAway}
+             {away.score}
            </div>
            <div className="team--score--buttons">
                <div id="decrementAway"

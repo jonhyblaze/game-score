@@ -44,11 +44,6 @@ body {
   text-align: center;
 } 
 
-.team--home {
-  background: #BDABFF;
-  justify-content: space-evenly;
-}
-
 .team {
   display: flex;
   flex-direction: column;
@@ -59,6 +54,10 @@ body {
   border-radius: 16px;
 }
 
+.team--home {
+  background: #BDABFF;
+  justify-content: space-evenly;
+}
 .team--away {
   background: #BDABFF;
   justify-content: space-evenly;
@@ -74,31 +73,20 @@ body {
 }
 
 .team--img {
-  width: 43px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   display: flex;
   align-self: center;
   justify-self: center;
   justify-content: center;
-
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 
 .team--img-name{
   display: flex;
   flex-direction: column;
   gap: .5rem;
-}
-.team--img--home {
-  background: url('/src/assets/images/angry-boar.png') no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.team--img--away {
-  background: url('/src/assets/images/wild-dog.png') no-repeat;
-  background-size: contain;
-  background-position: center;
 }
 
 .team--name {
@@ -152,14 +140,20 @@ body {
 }
 
 .img--final {
-  width: 86px;
-  height: 117.68px;
+  width: 150px;
+  height: 150px;
 }
 
 .winner--img-name {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.winner--name {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
 }
 
 .button--newgame {
