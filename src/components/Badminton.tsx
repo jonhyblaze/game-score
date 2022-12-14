@@ -87,7 +87,8 @@ function Badminton(props : any) {
 
   return (
     <div className="badminton--container">
-      <h1 className="app-name" onClick={props.startPage}>Badminton</h1>
+      
+      <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Badminton</h1>
 
       {!isPlaying ? (
         <div className="game--over">

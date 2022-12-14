@@ -29,21 +29,21 @@ function App() {
 
   return (
     <div className="App">
-       
       {!isSelected &&      
-        <section>
-          <h1>ScoreFlow</h1>
-          <p>Choose game</p>
-          <div>
+        <section className="start-page">
+          <h1 className="app-name" style={{alignSelf: "center"}}>ScoreFlow</h1>
+          <div className="game--component">
             <h4 onClick={handleSelectGame} id="badminton">Badminton</h4>
+            <div className="badminton-logo logo"></div>
           </div>
-          <div>
+          <div className="game--component">
             <h4 onClick={handleSelectGame} id="basketball">Basketball</h4>
+            <div className="basketball-logo logo"></div>
           </div>
         </section>}
        
       {selectedGame === 'badminton' && <Badminton startPage={startPage}/>}
-      {selectedGame === 'basketball' && <Basketball />}
+      {selectedGame === 'basketball' && <Basketball startPage={startPage}/>}
     </div>
   );
 }

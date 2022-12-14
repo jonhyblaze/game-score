@@ -2,7 +2,7 @@ import React from 'react'
 import { randomNumbers } from '../js/randomNumbers'
 import { avatars } from '../js/avatars'
 
-function Basketball() {
+function Basketball(props : any) {
   const random = randomNumbers()
   const [home, setHome] = React.useState({ name: '', url: '', score: 0 })
   const [away, setAway] = React.useState({ name: '', url: '', score: 0 })
@@ -51,6 +51,7 @@ function Basketball() {
 
   return (
     <div className="basketball--container">
+      <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Basketball</h1>
       <div className="score"></div>
       <div className="teams">
         <div className="team--home">

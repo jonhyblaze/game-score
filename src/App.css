@@ -7,6 +7,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: #1F2029;
   overflow: hidden;
+  color: #fff
 }
 
 .App {
@@ -22,18 +23,70 @@ body {
 
 /* *Typography */
 
-/* * Badminton Styles */
-
 .app-name {
   text-align: center;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.875rem;
+  font-size: 40px;
+  line-height: 48px;
   color: #FFFFFF;
   padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  
 }
+
+.start-page{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.back-button {
+  background-image: url('/src/assets/png/back.png');
+  background-repeat: no-repeat;
+  background-size: cover ;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.game--component {
+  width: 382px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 39px;
+  cursor: pointer;
+}
+.logo{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 102px;
+  height: 102px;
+}
+.badminton-logo {
+  background-image:  url('/src/assets/png/badminton.png');
+}
+.basketball-logo {
+  background-image: url('/src/assets/png/basketball.png');
+}
+
+
+
+
+
+
+/* * Badminton Styles */
 
 .badminton--container {
   display: flex;
