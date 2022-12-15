@@ -1,0 +1,71 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
+p {
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.basketball--container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.teams {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.teams > * {
+  width: 183px;
+  height: 400px;
+  background: #BDABFF;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.team--home, .team--away {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.team--home > *, .team--away > * {
+  color: #000
+}
+
+.game--input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #BDABFF;
+  border-radius: 16px;
+  width: 382px;
+  height: 400px;
+  color: #000;
+  text-align: center;
+}
+
+.timer--setup {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+

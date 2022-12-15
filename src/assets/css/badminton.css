@@ -1,0 +1,142 @@
+
+.badminton--container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.teams{
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+} 
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 183px;
+  height: 400px;
+  border-radius: 16px;
+}
+
+.team--home {
+  background: #BDABFF;
+  justify-content: space-evenly;
+}
+.team--away {
+  background: #BDABFF;
+  justify-content: space-evenly;
+}
+
+.team--score {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 97px;
+  color: #000000;
+}
+
+.team--img {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.team--img-name{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.team--name {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+
+.team--score--buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.button--decrement {
+  width: 32px;
+  height: 32px;
+  background-image: url('/src/assets/svg/button--decrement.svg');
+  align-self: center;
+  cursor: pointer;
+}
+
+.button--increment {
+  width: 53px;
+  height: 53px;
+  background-image: url('/src/assets/svg/button--increment.svg');
+  cursor: pointer;
+}
+
+.game--over {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #7EE68D;
+  border-radius: 16px;
+  width: 382px;
+  height: 400px;
+  color: #000;
+  text-align: center;
+}
+
+.final--score {
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 109px;
+  text-align: center;
+  color: #000000;
+}
+
+.img--final {
+  width: 150px;
+  height: 150px;
+}
+
+.winner--img-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.winner--name {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.button{
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 64px;
+  height: 56px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.875rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}

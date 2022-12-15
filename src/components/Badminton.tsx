@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { avatars } from '../js/avatars'
 import { randomNumbers } from '../js/randomNumbers'
-
-interface TeamState {
-  name: string
-  url: string
-  score: number
-}
+import { TeamState } from '../interfaces/TeamState'
 
 function Badminton(props : any) {
+  
+  // ? Initializing component's state
+
   const [random, setRandom] = useState<number[]>(randomNumbers())
+  const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [home, setHome] = useState<TeamState>({
     name: avatars[random[0]].name,
     url: avatars[random[0]].url,
-    score: 0,
+    score: 0
   })
   const [away, setAway] = useState<TeamState>({
     name: avatars[random[1]].name,
     url: avatars[random[1]].url,
-    score: 0,
+    score: 0
   })
-  const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  
+  // ? Describing methods and fetures of component
 
   const increment = (event: any) => {
     if (event.target.id === 'incrementHome') {
@@ -40,7 +40,7 @@ function Badminton(props : any) {
     }
   }
 
-  // Specifying winning conditions for particular game
+  // ? Specifying winning conditions for particular game
 
   useEffect(() => {
     if (
@@ -51,7 +51,8 @@ function Badminton(props : any) {
     } else setIsPlaying(true)
   }, [home.score, away.score])
 
-  
+  // ? Event handling functions for main buttons
+
   const restartGame = () :void => {
     setHome({...home, score: 0})
     setAway({...away, score: 0})
