@@ -76,6 +76,19 @@ function Badminton(props : any) {
     setIsPlaying(true)
   }
 
+  // Team selection event handler for team icons
+  const handleTeamSelection = (event : any) : void =>{ 
+    (home.score === 0 && away.score === 0) && setRandom(randomNumbers())
+    if(event.target.id === "team--home") {
+      setHome({...home, name: avatars[random[0]].name, url: avatars[random[0]].url})
+    }
+    if(event.target.id === "team--away") {
+      setAway({...away, name: avatars[random[1]].name, url: avatars[random[1]].url})
+    }
+  }
+
+
+
   // Styles
 
   let winnerColor = {
@@ -100,7 +113,7 @@ function Badminton(props : any) {
             </div>
           ) : (
             <div className="winner--img-name">
-              <img src={away.url} alt="" className="team--img img--final" />
+              <img src={away.url} alt="" className="team--img img--final"/>
               <div className="team--name winner--name">{away.name} wins!</div>
             </div>
           )}
@@ -116,7 +129,7 @@ function Badminton(props : any) {
               style={away.score < home.score ? winnerColor : looserColor}
             >
               <div className="team--img-name">
-                <img src={home.url} alt="" className="team--img" />
+                <img src={home.url} alt="" className="team--img" id="team--home" onClick={handleTeamSelection}/>
                 <div className="team--name">{home.name}</div>
               </div>
               <div className="team--score">{home.score}</div>
@@ -139,7 +152,7 @@ function Badminton(props : any) {
               style={away.score > home.score ? winnerColor : looserColor}
             >
               <div className="team--img-name">
-                <img src={away.url} alt="" className="team--img" />
+                <img src={away.url} alt="" className="team--img" id="team--away" onClick={handleTeamSelection}/>
                 <div className="team--name">{away.name}</div>
               </div>
               <div className="team--score">{away.score}</div>

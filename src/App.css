@@ -35,7 +35,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1.75rem;
-  
 }
 
 .start-page{
@@ -80,10 +79,3 @@ body {
 .basketball-logo {
   background-image: url('/src/assets/png/basketball.png');
 }
-
-
-
-
-
-
-/* * Badminton Styles */

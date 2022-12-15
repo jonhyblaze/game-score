@@ -9,6 +9,13 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+
 p {
   font-weight: 500;
   font-size: 19px;
@@ -26,6 +33,17 @@ p {
   display: flex;
   flex-direction: row;
   text-align: center;
+}
+
+.teams--avatars {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.team--img--draw {
+  width: 165px;
+  height: 165px;
 }
 
 .teams > * {
@@ -49,23 +67,98 @@ p {
   color: #000
 }
 
+.game--over--draw {
+  background: #BDABFF;
+}
+
 .game--input {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #BDABFF;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   width: 382px;
   height: 400px;
-  color: #000;
+  color: #fff;
   text-align: center;
+}
+
+.timer--container {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
 }
 
 .timer--setup {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 1rem;
   align-items: center;
 }
 
+.timer--value {
+  color: #fff;
+  font-weight: 700;
+  font-size: 90px;
+  line-height: 109px;
+}
 
+.timer--minus {
+  background: url('/src/assets/svg/button--minus.svg');
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background-size: cover;
+}
 
+.timer--plus {
+  background-image: url('/src/assets/svg/button--plus.svg');
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background-size: cover;
+}
+
+.timer--countdown {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.button--ok{
+  background-image: url('/src/assets/svg/button--ok.svg');
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background-size: cover;
+  text-align: center;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.buttons--plus{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: .55rem;
+}
+
+.buttons--plus > * {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background-size: cover;
+  text-align: center;
+  background-position: center;
+}
+
+.button--plus1 {
+  background-image: url('/src/assets/svg/button--plus1.svg');
+}
+.button--plus2 {
+  background-image: url('/src/assets/svg/button--plus2.svg');
+}
+.button--plus3 {
+  background-image: url('/src/assets/svg/button--plus3.svg');
+}

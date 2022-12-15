@@ -34,14 +34,14 @@
 .team--score {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 80px;
+  font-size: 95px;
   line-height: 97px;
   color: #000000;
 }
 
 .team--img {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-self: center;
   justify-self: center;
@@ -107,8 +107,8 @@
 }
 
 .img--final {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
 }
 
 .winner--img-name {
