@@ -56,8 +56,8 @@ function App() {
         </section>
       )}
 
-      {selectedGame === "badminton" && <Badminton startPage={startPage} />}
-      {selectedGame === "basketball" && <Basketball startPage={startPage} />}
+      {selectedGame === "badminton" && <Badminton startPage={startPage} isSelected={isSelected} selectedGame={selectedGame}/>}
+      {selectedGame === "basketball" && <Basketball startPage={startPage} isSelected={isSelected} selectedGame={selectedGame}/>}
     </div>
   )
 }

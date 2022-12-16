@@ -16,12 +16,14 @@ function Basketball(props : any) {
   const [home, setHome] = React.useState<TeamState>({ 
     name: avatars[random[0]].name,
     url: avatars[random[0]].url,
-    score: 0
+    score: 0,
+    win: 0
   })
   const [away, setAway] = React.useState<TeamState>({
     name: avatars[random[1]].name,
     url: avatars[random[1]].url,
-    score: 0
+    score: 0,
+    win: 0
   })
  
   // ? Describing methods and fetures of component
@@ -143,23 +145,20 @@ function Basketball(props : any) {
   }
 
   return (
-    <section className="basketball--container">
-      <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Basketball</h1>
-      {/* {!isPlaying && 
-      <div className="game--input">
-        <p>Choose game duration</p>
-        <div className="timer--container">
-          <div className="timer--setup">  
-            <div className="timer--minus" onClick={handleSetTimer}></div>
-            <div className="timer--value team--score">{timer}</div>
-            <div className="timer--plus" onClick={handleSetTimer}></div>
-          </div>
-          <h4>Minutes</h4>
-        </div>
-        <div onClick={confirmTime} className="button--ok"></div>
-      </div>
-        } */}
-      <Setup isPlaying={isPlaying} confirmTime={confirmTime} timer={timer} handleSetTimer={handleSetTimer}/>
+  <section className="basketball--container">
+      <h1 className="app-name" onClick={props.startPage}>
+        <div className='back-button'></div>Basketball
+      </h1>
+      <Setup isPlayingBasket={isPlaying} 
+             confirmTimeBasket={confirmTime} 
+             timerBasket={timer} 
+             handleSetTimerBasket={handleSetTimer}
+             isSelectedBasket={props.isSelected}
+             selectedGame={props.selectedGame}
+      />
+
+      {/* Rendering playing conditions */}
+
       {countdown > 0 && <>  
       <h3 className="timer--countdown">{formattedCountdown} left to play</h3>
       <div className="teams">
@@ -212,29 +211,32 @@ function Basketball(props : any) {
       
         {/* Rendering winning conditions */}
 
-      {(countdown < 1 && (home.score > away.score || home.score < away.score)) && <>
-      <div className="game--over">
-      {home.score > away.score ? (
-        <div className="winner--img-name">
-          <img src={home.url} alt="" className="team--img img--final" />
-          <div className="team--name winner--name">{home.name} wins!</div>
+      {(countdown < 1 && (home.score > away.score || home.score < away.score)) && 
+      <>
+        <div className="game--over">
+        {home.score > away.score ? (
+          <div className="winner--img-name">
+            <img src={home.url} alt="" className="team--img img--final" />
+            <div className="team--name winner--name">{home.name} wins!</div>
+          </div>
+        ) : (
+          <div className="winner--img-name">
+            <img src={away.url} alt="" className="team--img img--final" />
+            <div className="team--name winner--name">{away.name} wins!</div>
+          </div>
+        )}
+        <div className="final--score">
+          {home.score}:{away.score}
         </div>
-      ) : (
-        <div className="winner--img-name">
-          <img src={away.url} alt="" className="team--img img--final" />
-          <div className="team--name winner--name">{away.name} wins!</div>
-        </div>
-      )}
-      <div className="final--score">
-        {home.score}:{away.score}
       </div>
-    </div>
-    <div onClick={startNewGame} className="button">New Game</div>
-    </>}
+      <div onClick={startNewGame} className="button">New Game</div>
+    </>
+    }
 
-  {/* Rendering Draw conditionals */}
+  {/* Rendering Draw condition */}
 
-    {(countdown < 1 && (home.score === away.score) && isPlaying) && <>
+    {(countdown < 1 && (home.score === away.score) && isPlaying) && 
+    <>
       <div className="game--over game--over-draw">
         <div className="teams--avatars">
           <img src={home.url} alt="" className="team--img team--img--draw"/>
@@ -247,8 +249,9 @@ function Basketball(props : any) {
         </div>
       </div>
       <div onClick={startNewGame} className="button">New Game</div>
-    </>}
-    </section>
+    </>
+    }
+  </section>
   )
 }
 

@@ -2,22 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { avatars } from '../js/avatars'
 import { randomNumbers } from '../js/randomNumbers'
 import { TeamState } from '../interfaces/TeamState'
+import Setup from './Setup'
 
 function Badminton(props : any) {
-  
+  console.log(props)
   // ? Initializing component's state
 
   const [random, setRandom] = useState<number[]>(randomNumbers())
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [rules, setRules] = useState<number>(11)
   const [home, setHome] = useState<TeamState>({
     name: avatars[random[0]].name,
     url: avatars[random[0]].url,
-    score: 0
+    score: 0,
+    win: 0
   })
   const [away, setAway] = useState<TeamState>({
     name: avatars[random[1]].name,
     url: avatars[random[1]].url,
-    score: 0
+    score: 0,
+    win: 0
   })
   
   // ? Describing methods and fetures of component
@@ -44,11 +48,13 @@ function Badminton(props : any) {
 
   useEffect(() => {
     if (
-      (home.score > 10 && home.score > away.score + 1) ||
-      (away.score > 10 && away.score > home.score + 1)
+      (home.score >= rules && home.score > away.score + 1) ||
+      (away.score >= rules && away.score > home.score + 1)
     ) {
       setIsPlaying(false)
-    } else setIsPlaying(true)
+    } else if (home.score !== 0 || away.score !== 0) {
+      setIsPlaying(true)
+    }
   }, [home.score, away.score])
 
   // ? Event handling functions for main buttons
@@ -87,7 +93,16 @@ function Badminton(props : any) {
     }
   }
 
+  // Rules togglers 
 
+  const handleSetDuration = (event : any) => {
+    if(event.target.className === "timer--plus") {
+      rules < 21 && setRules(prev => prev + 1)
+    }
+    if(event.target.className === "timer--minus") {
+      rules > 11 && setRules(prev => prev - 1)
+    }
+  }
 
   // Styles
 
@@ -103,25 +118,16 @@ function Badminton(props : any) {
     <div className="badminton--container">
       
       <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Badminton</h1>
+      <Setup isPlayingBadmin={isPlaying} 
+             rulesBadmin={rules} 
+             confirmDurationBadmin={startNewGame}
+             handleSetDurationBadmin={handleSetDuration}
+             isSelectedBadmin={props.isSelected}
+             selectedGame={props.selectedGame}
+      />
 
-      {!isPlaying ? (
-        <div className="game--over">
-          {home.score > away.score ? (
-            <div className="winner--img-name">
-              <img src={home.url} alt="" className="team--img img--final" />
-              <div className="team--name winner--name">{home.name} wins!</div>
-            </div>
-          ) : (
-            <div className="winner--img-name">
-              <img src={away.url} alt="" className="team--img img--final"/>
-              <div className="team--name winner--name">{away.name} wins!</div>
-            </div>
-          )}
-          <div className="final--score">
-            {home.score}:{away.score}
-          </div>
-        </div>
-      ) : (
+      {(isPlaying) &&
+        (
         <div className="game--on">
           <div className="teams">
             <div
@@ -170,13 +176,39 @@ function Badminton(props : any) {
               </div>
             </div>
           </div>
+          {!isPlaying || (home.score === 0 && away.score === 0)? 
+            (<div id="new-game" onClick={startNewGame} className="button">
+              New Game
+            </div>) : (<div id="restart-game" onClick={restartGame} className="button">Restart</div>)
+          }
         </div>
+        
       )}
 
-      {!isPlaying && <div id="restart-game" onClick={restartGame} className="button">Next round</div>}
-      <div id="new-game" onClick={startNewGame} className="button">
+{!isPlaying && (home.score > away.score || away.score > home.score) && 
+      ( <>
+        <div className="game--over">
+          {home.score > away.score ? (
+            <div className="winner--img-name">
+              <img src={home.url} alt="" className="team--img img--final" />
+              <div className="team--name winner--name">{home.name} wins!</div>
+            </div>
+          ) : (
+            <div className="winner--img-name">
+              <img src={away.url} alt="" className="team--img img--final"/>
+              <div className="team--name winner--name">{away.name} wins!</div>
+            </div>
+          )}
+          <div className="final--score">
+            {home.score}:{away.score}
+          </div>
+        </div>
+        {!isPlaying && <div id="restart-game" onClick={restartGame} className="button">Next round</div>}
+        {!isPlaying && <div id="new-game" onClick={startNewGame} className="button">
         New Game
-      </div>
+      </div>}
+        </>
+      )}  
     </div>
   )
 }
