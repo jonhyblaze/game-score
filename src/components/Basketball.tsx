@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { randomNumbers } from '../js/randomNumbers'
 import { avatars } from '../js/avatars'
 import { TeamState } from '../interfaces/TeamState'
+import Setup from './Setup'
 
 function Basketball(props : any) {
   
@@ -144,7 +145,7 @@ function Basketball(props : any) {
   return (
     <section className="basketball--container">
       <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Basketball</h1>
-      {!isPlaying && 
+      {/* {!isPlaying && 
       <div className="game--input">
         <p>Choose game duration</p>
         <div className="timer--container">
@@ -157,7 +158,8 @@ function Basketball(props : any) {
         </div>
         <div onClick={confirmTime} className="button--ok"></div>
       </div>
-        }
+        } */}
+      <Setup isPlaying={isPlaying} confirmTime={confirmTime} timer={timer} handleSetTimer={handleSetTimer}/>
       {countdown > 0 && <>  
       <h3 className="timer--countdown">{formattedCountdown} left to play</h3>
       <div className="teams">
