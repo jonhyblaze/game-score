@@ -10,7 +10,6 @@ import Basketball from "./components/Basketball"
 function App() {
   const [isSelected, setIsSelected] = useState<boolean>(false)
   const [selectedGame, setSelectedGame] = useState<string>("")
-
   const handleSelectGame = (event: any) => {
     if (event.target.id === "badminton") {
       setSelectedGame("badminton")

@@ -26,7 +26,7 @@ function Basketball(props : any) {
     win: 0
   })
  
-  // ? Describing methods and fetures of component
+  // ? Describing methods and event handlers of component
 
   const scoreOne = (event: any) => {
     if (event.target.id === 'score-one-home') {
@@ -160,7 +160,7 @@ function Basketball(props : any) {
       {/* Rendering playing conditions */}
 
       {countdown > 0 && <>  
-      <h3 className="timer--countdown">{formattedCountdown} left to play</h3>
+      <h3 className="timer--countdown">Time: {formattedCountdown}</h3>
       <div className="teams">
         <div className="team--home team" style={away.score < home.score ? winnerColor : looserColor}>
           <div className="team--img-name">

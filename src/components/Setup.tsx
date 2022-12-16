@@ -1,9 +1,7 @@
-import { ok } from "assert";
 import React, {useState} from "react";
 
  function Setup (props : any) : any {
   const [isSet, setIsSet] = useState<boolean>(false)
-  console.log(props)
   
   const okConfirmation = (event : any) => {
     if(event.target.id ==="button--ok--badmin") {
@@ -18,7 +16,7 @@ import React, {useState} from "react";
 
   
   return (<>
-    {(!props.isPlayingBasket && props.isSelectedBasket) && 
+    {(!props.isPlayingBasket && props.isSelectedBasket && !isSet) && 
       <div className="game--input">
         <p>Choose game duration</p>
         <div className="timer--container">

@@ -5,11 +5,14 @@
   margin: 0 auto;
   gap: 1rem;
 }
-
-/* .badminton--container > * {
-  margin: 0 auto;
-} */
-
+.sets--score {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 2rem;
+  letter-spacing: .25rem;
+  color: #fff;
+  padding-bottom: .5rem;
+}
 .teams{
   display: flex;
   gap: 1rem;
@@ -94,7 +97,7 @@
 .game--over {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: #7EE68D;
   border-radius: 1rem;
   width: 23.875rem;

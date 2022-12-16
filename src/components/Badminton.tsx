@@ -5,11 +5,9 @@ import { TeamState } from '../interfaces/TeamState'
 import Setup from './Setup'
 
 function Badminton(props : any) {
-  console.log(props)
-  // ? Initializing component's state
-
   const [random, setRandom] = useState<number[]>(randomNumbers())
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [isFinised, setIsFinished] = useState<boolean>(false)
   const [rules, setRules] = useState<number>(11)
   const [home, setHome] = useState<TeamState>({
     name: avatars[random[0]].name,
@@ -44,7 +42,7 @@ function Badminton(props : any) {
     }
   }
 
-  // ? Specifying winning conditions for particular game
+  // ? Specifying winning conditions:
 
   useEffect(() => {
     if (
@@ -57,7 +55,20 @@ function Badminton(props : any) {
     }
   }, [home.score, away.score])
 
-  // ? Event handling functions for main buttons
+// ? Implementing win count update in team state object:
+
+useEffect( ()=>{
+  if(home.score >= rules && home.score > away.score + 1) {
+    setIsFinished(true)
+    setHome({...home, win: home.win + 1})
+  }
+  if(away.score >= rules && away.score > home.score + 1) {
+    setIsFinished(true)
+    setAway({...away, win: away.win + 1})
+  }
+},[away.score, home.score])
+
+  // ? Event handling functions for main buttons:
 
   const restartGame = () :void => {
     setHome({...home, score: 0})
@@ -114,14 +125,20 @@ function Badminton(props : any) {
     backgroundColor: '#BDABFF',
   }
 
+  // Condition variables
+
+  const winConditions = !isPlaying && (home.score > away.score || away.score > home.score)
+
+  
   return (
     <div className="badminton--container">
       
       <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Badminton</h1>
+      {(isPlaying || drawConditions) && <h3 className="sets--score">{home.win}:{away.win}</h3>}
       <Setup isPlayingBadmin={isPlaying} 
              rulesBadmin={rules} 
-             confirmDurationBadmin={startNewGame}
              handleSetDurationBadmin={handleSetDuration}
+             confirmDurationBadmin={startNewGame}
              isSelectedBadmin={props.isSelected}
              selectedGame={props.selectedGame}
       />
@@ -185,7 +202,9 @@ function Badminton(props : any) {
         
       )}
 
-{!isPlaying && (home.score > away.score || away.score > home.score) && 
+{/* Rendering Wining condition */}
+
+{winConditions && 
       ( <>
         <div className="game--over">
           {home.score > away.score ? (
