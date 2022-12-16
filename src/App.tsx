@@ -4,6 +4,7 @@ import './assets/css/reset.css'
 import './App.css'
 import './assets/css/badminton.css'
 import './assets/css/basketball.css'
+import './assets/css/mediaQuerries.css'
 import Basketball from './components/Basketball';
 
 

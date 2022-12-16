@@ -1,0 +1,67 @@
+@media screen and (max-width: 405px) {
+  .App {
+    max-width: fit-content;
+  }
+
+/* Starting Page  */
+
+  .start-page{
+    max-width: 400px;
+  }
+
+  .app-name {
+    font-size: 2.2575rem;
+    padding-bottom: .875rem;
+
+  }
+
+  .game--component {
+    min-width: 350px;
+    min-height: 120px;
+  }
+
+  .game--component > * {
+    font-size: 1.850rem;
+  }
+
+  .game--component > .logo {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  /* Badminton */
+ 
+  .back-button {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+ 
+  .teams, .button, .game--over {
+    width: 360px;
+  }
+  .teams {
+    gap: 0.75rem;
+  }
+  .team {
+    height: 24rem;
+  }
+
+  .button {
+    height: 3rem;
+  }
+
+  /* Basketball */
+
+  .game--input {
+    width:  360px;
+  }
+
+  .basketball--contaainer {
+    gap: 0.75rem;
+  }
+
+
+
+
+
+}

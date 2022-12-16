@@ -161,7 +161,7 @@ function Basketball(props : any) {
       {countdown > 0 && <>  
       <h3 className="timer--countdown">{formattedCountdown} left to play</h3>
       <div className="teams">
-        <div className="team--home" style={away.score < home.score ? winnerColor : looserColor}>
+        <div className="team--home team" style={away.score < home.score ? winnerColor : looserColor}>
           <div className="team--img-name">
             <img src={home.url} alt="" className="team--img" id="team--home" onClick={handleTeamSelection}/>
             <h3 className="team--home--name">{home.name}</h3>
@@ -182,7 +182,7 @@ function Basketball(props : any) {
               </div>
           </div>
         </div>
-        <div className="team--away" style={away.score > home.score ? winnerColor : looserColor}>
+        <div className="team--away team" style={away.score > home.score ? winnerColor : looserColor}>
           <div className="team--img-name">
             <img src={away.url} alt="" className="team--img" id="team--away" onClick={handleTeamSelection}/>
             <h3 className="team--away--name">{away.name}</h3>
