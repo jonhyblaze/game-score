@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import Badminton from "./components/Badminton"
+import Basketball from "./components/Basketball"
 import "./assets/css/reset.css"
 import "./App.css"
 import "./assets/css/badminton.css"
 import "./assets/css/basketball.css"
 import "./assets/css/mediaQuerries.css"
-import Basketball from "./components/Basketball"
 
 function App() {
   const [isSelected, setIsSelected] = useState<boolean>(false)

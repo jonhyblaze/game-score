@@ -83,13 +83,16 @@ useEffect( ()=>{
       name: avatars[random[0]].name,
       url: avatars[random[0]].url,
       score: 0,
+      win: 0
     })
     setAway({
       ...home,
       name: avatars[random[1]].name,
       url: avatars[random[1]].url,
       score: 0,
+      win: 0
     })
+
     setIsPlaying(true)
   }
 
@@ -129,12 +132,12 @@ useEffect( ()=>{
 
   const winConditions = !isPlaying && (home.score > away.score || away.score > home.score)
 
-  
+
   return (
     <div className="badminton--container">
       
       <h1 className="app-name" onClick={props.startPage}><div className='back-button'></div>Badminton</h1>
-      {(isPlaying || drawConditions) && <h3 className="sets--score">{home.win}:{away.win}</h3>}
+      {(isPlaying || winConditions) && <h3 className="sets--score">{home.win}:{away.win}</h3>}
       <Setup isPlayingBadmin={isPlaying} 
              rulesBadmin={rules} 
              handleSetDurationBadmin={handleSetDuration}

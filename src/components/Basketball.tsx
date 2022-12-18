@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
+import Setup from './Setup'
 import { randomNumbers } from '../js/randomNumbers'
 import { avatars } from '../js/avatars'
 import { TeamState } from '../interfaces/TeamState'
-import Setup from './Setup'
 
 function Basketball(props : any) {
   

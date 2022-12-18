@@ -13,7 +13,6 @@ import React, {useState} from "react";
       setIsSet(true)
     }
   } 
-
   
   return (<>
     {(!props.isPlayingBasket && props.isSelectedBasket && !isSet) && 
